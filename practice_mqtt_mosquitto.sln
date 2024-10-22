@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "practice_mqtt_mosquitto", "practice_mqtt_mosquitto.vcxproj", "{33031783-6047-4288-8D87-FA1A2ADB3EA5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33031783-6047-4288-8D87-FA1A2ADB3EA5}.Debug|x64.ActiveCfg = Debug|x64
+		{33031783-6047-4288-8D87-FA1A2ADB3EA5}.Debug|x64.Build.0 = Debug|x64
+		{33031783-6047-4288-8D87-FA1A2ADB3EA5}.Debug|x86.ActiveCfg = Debug|Win32
+		{33031783-6047-4288-8D87-FA1A2ADB3EA5}.Debug|x86.Build.0 = Debug|Win32
+		{33031783-6047-4288-8D87-FA1A2ADB3EA5}.Release|x64.ActiveCfg = Release|x64
+		{33031783-6047-4288-8D87-FA1A2ADB3EA5}.Release|x64.Build.0 = Release|x64
+		{33031783-6047-4288-8D87-FA1A2ADB3EA5}.Release|x86.ActiveCfg = Release|Win32
+		{33031783-6047-4288-8D87-FA1A2ADB3EA5}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68DDAB72-5409-4BB9-A763-D72D393BF0CA}
+	EndGlobalSection
+EndGlobal
