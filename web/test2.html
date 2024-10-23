@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MQTT와 웹소켓 테스트</title>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js"
+            type = "text/javascript"> </script>
+    <script type="text/javascript">
+        var mqtt;
+        var reconnectTimeout  =5000;
+        var host = "127.0.0.1";
+        var port = 9001;
+        var myimg = document.getElementById("myimg");
+		
+		
+		
+		function onConnect()
+		{
+			var mydiv = document.getElementById("mydiv");
+			mydiv.innerHTML += "접속완료";
+			mydiv.innerHTML += "<br/>";
+			
+			
+			mqtt.subscribe("temperature/fahrenheit");
+        }
+		
+        function onFailure(message){
+			var mydiv = document.getElementById("mydiv");
+			mydiv.innerHTML += "접속실패";
+			mydiv.innerHTML += "<br/>";
+
+			setTimeout(MQTTconnect,reconnectTimeout)
+		}
+
+		function onMessageArrived(msg){
+			var mydiv = document.getElementById("mydiv");
+			
+			mydiv.innerHTML += msg.payloadString;
+			mydiv.innerHTML += "<br/>";
+		}
+		
+		function MQTTconnect(){
+			var mydiv = document.getElementById("mydiv");
+
+			mydiv.innerHTML = "연결시도";
+			mydiv.innerHTML += "<br/>";
+
+            
+            mqtt = new Paho.MQTT.Client(host,port,"javascript2");
+            var options = {
+                timeout:30,
+                onSuccess:onConnect,
+                onFailure:onFailure,
+            };
+			
+			mqtt.onMessageArrived = onMessageArrived
+   
+            mqtt.connect(options); //connect
+        }
+    </script>
+</head>
+<body>
+    <h1>MQTT와 웹소켓 테스트</h1>
+    <img src="" id="myimg"/>
+	<div id="mydiv"/>
+    <script type="text/javascript">
+        MQTTconnect();
+    </script>
+</body>
+</html>
