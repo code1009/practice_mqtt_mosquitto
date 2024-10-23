@@ -9,10 +9,10 @@
 
 ### setup
 https ://mosquitto.org/files/binary/win64/
-mosquitto - 2.0.14 - install - windows - x64.exe : websocket 정상 동작
+mosquitto - 2.0.14  - install - windows - x64.exe : websocket 정상 동작
 mosquitto - 2.0.18a - install - windows - x64.exe : websocket 정상 동작
-mosquitto - 2.0.19 - install - windows - x64.exe : websocket 정상 동작 안함 "error: websockets support not available."
-mosquitto - 2.0.20 - install - windows - x64.exe : websocket 정상 동작 안함 "error: websockets support not available."
+mosquitto - 2.0.19  - install - windows - x64.exe : websocket 정상 동작 안함 "error: websockets support not available."
+mosquitto - 2.0.20  - install - windows - x64.exe : websocket 정상 동작 안함 "error: websockets support not available."
 
 
 
