@@ -48,12 +48,16 @@ C:\Program Files\mosquitto>mosquitto.exe -c mosquitto.conf -v
 class mqtt_tempconv : public mosqpp::mosquittopp
 {
 public:
+	int _mid;
+
+public:
 	mqtt_tempconv(const char* id, const char* host, int port);
 	virtual ~mqtt_tempconv();
 
 	virtual void on_connect(int rc) override;
 	virtual void on_message(const struct mosquitto_message* message) override;
 	virtual void on_subscribe(int mid, int qos_count, const int* granted_qos) override;
+	virtual void on_unsubscribe(int mid) override;
 
 public:
 	void publish_my_message(void);
@@ -80,7 +84,10 @@ void mqtt_tempconv::on_connect(int rc)
 	if (rc == 0) 
 	{
 		/* Only attempt to subscribe on a successful connect. */
-		subscribe(NULL, "temperature/celsius");
+		_mid = 0;
+		subscribe(&_mid, "temperature/celsius");
+
+		printf("[%08x] on_connect() %d : mid %u \n", GetCurrentThreadId(), rc,_mid);
 	}
 }
 
@@ -113,7 +120,12 @@ void mqtt_tempconv::on_message(const struct mosquitto_message* message)
 
 void mqtt_tempconv::on_subscribe(int mid, int qos_count, const int* granted_qos)
 {
-	printf("[%08x] Subscription succeeded.\n", GetCurrentThreadId());
+	printf("[%08x] Subscription succeeded. %u, \n", GetCurrentThreadId(), mid);
+}
+
+void mqtt_tempconv::on_unsubscribe(int mid)
+{
+	printf("[%08x] on_unsubscribe. %u, \n", GetCurrentThreadId(), mid);
 }
 
 void mqtt_tempconv::publish_my_message(void)
